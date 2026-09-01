@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Turma 24B · Coletivo Educação</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">COLETIVO EDUCAÇÃO · SPRINT 2</p>
+      <h1>Turma 24B</h1>
+      <p class="subtitle">
+        30 estudantes fictícios. Analise evidências, compare contextos e organize a atenção da equipe.
+      </p>
+    </div>
+    <div class="topbar-actions">
+      <button class="ghost" id="resetBtn">Limpar organização</button>
+      <button class="primary" id="exportBtn">Exportar organização</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="notice">
+      <strong>Importante:</strong>
+      a página não calcula “risco de evasão”. Os filtros ajudam a explorar a turma; a interpretação continua sendo responsabilidade da squad.
+    </section>
+
+    <section class="controls" aria-label="Filtros e ordenação">
+      <div class="control control-search">
+        <label for="search">Buscar</label>
+        <input id="search" type="search" placeholder="Nome, evidência ou contexto..." />
+      </div>
+
+      <div class="control">
+        <label for="sort">Ordenar por</label>
+        <select id="sort">
+          <option value="name-asc">Nome A–Z</option>
+          <option value="name-desc">Nome Z–A</option>
+          <option value="attendance-asc">Frequência: menor → maior</option>
+          <option value="attendance-desc">Frequência: maior → menor</option>
+          <option value="deliveries-asc">Entregas: menor → maior</option>
+          <option value="deliveries-desc">Entregas: maior → menor</option>
+          <option value="age-asc">Idade: menor → maior</option>
+          <option value="age-desc">Idade: maior → menor</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label for="attendance">Frequência</label>
+        <select id="attendance">
+          <option value="">Todas</option>
+          <option value="under80">Abaixo de 80%</option>
+          <option value="80to89">80% a 89%</option>
+          <option value="90plus">90% ou mais</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label for="deliveries">Entregas</label>
+        <select id="deliveries">
+          <option value="">Todas</option>
+          <option value="under70">Abaixo de 70%</option>
+          <option value="70to89">70% a 89%</option>
+          <option value="90plus">90% ou mais</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label for="participation">Participação</label>
+        <select id="participation">
+          <option value="">Todas</option>
+          <option value="Alta">Alta</option>
+          <option value="Média">Média</option>
+          <option value="Baixa">Baixa</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label for="bucket">Organização</label>
+        <select id="bucket">
+          <option value="">Todas</option>
+          <option value="unreviewed">Não analisado</option>
+          <option value="act">Agir agora</option>
+          <option value="understand">Entender melhor</option>
+          <option value="monitor">Acompanhar</option>
+          <option value="none">Sem ação por enquanto</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="summary" id="summary"></section>
+
+    <section class="workspace">
+      <aside class="buckets" aria-label="Resumo da organização da squad">
+        <h2>Organização da squad</h2>
+        <p>Classifique manualmente cada estudante conforme a discussão da equipe.</p>
+
+        <button class="bucket bucket-act" data-bucket-filter="act">
+          <span>Agir agora</span><strong id="count-act">0</strong>
+        </button>
+        <button class="bucket bucket-understand" data-bucket-filter="understand">
+          <span>Entender melhor</span><strong id="count-understand">0</strong>
+        </button>
+        <button class="bucket bucket-monitor" data-bucket-filter="monitor">
+          <span>Acompanhar</span><strong id="count-monitor">0</strong>
+        </button>
+        <button class="bucket bucket-none" data-bucket-filter="none">
+          <span>Sem ação por enquanto</span><strong id="count-none">0</strong>
+        </button>
+        <button class="bucket bucket-unreviewed" data-bucket-filter="unreviewed">
+          <span>Não analisado</span><strong id="count-unreviewed">30</strong>
+        </button>
+
+        <div class="tip">
+          <strong>Dica de facilitação</strong>
+          <p>Peça sempre: “Qual evidência sustenta essa posição?”</p>
+        </div>
+      </aside>
+
+      <section>
+        <div class="results-head">
+          <div>
+            <h2>Estudantes</h2>
+            <p id="resultCount">30 resultados</p>
+          </div>
+          <div class="view-switch">
+            <button class="view active" data-view="cards" aria-pressed="true">Cards</button>
+            <button class="view" data-view="table" aria-pressed="false">Tabela</button>
+          </div>
+        </div>
+
+        <div id="studentContainer"></div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="studentDialog">
+    <form method="dialog" class="dialog-card">
+      <button class="dialog-close" aria-label="Fechar">×</button>
+      <div id="dialogContent"></div>
+    </form>
+  </dialog>
+
+  <script src="students.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
