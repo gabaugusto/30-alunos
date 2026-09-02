@@ -220,12 +220,7 @@ async function init(){
   });
   $("unlockBtn").addEventListener("click",unlockPraxis);
   els.unlockCode.addEventListener("keydown",e=>{if(e.key==="Enter")unlockPraxis()});
-  $("exportBtn").addEventListener("click",exportData);
-  $("resetBtn").addEventListener("click",()=>{
-    if(confirm("Reiniciar toda a atividade, incluindo a fotografia anterior a PRAXIS?")){
-      localStorage.removeItem(STORAGE_KEY);location.reload();
-    }
-  });
+
   render();
 }
 init();
