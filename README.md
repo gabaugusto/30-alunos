@@ -1,26 +1,35 @@
-# Turma 24B · Página de análise
+# Turma 24B · Sprint 2 com desbloqueio PRAXIS
 
-Abra `index.html` em um navegador.
+## O que mudou
+- `students.json` concentra:
+  - dados iniciais dos 30 estudantes;
+  - 14 novas evidências;
+  - código de desbloqueio `PRAXIS`;
+  - metadados da atividade.
+- Antes de PRAXIS, a squad organiza a turma normalmente.
+- Ao inserir `PRAXIS` no final da página:
+  - a triagem atual é salva como `snapshotBeforePraxis`;
+  - as 14 novas evidências são reveladas;
+  - a organização inicial é preservada;
+  - os participantes podem repriorizar;
+  - a interface mostra `Antes → Agora`;
+  - itens alterados recebem `REPRIORIZADO`.
+- O estado permanece salvo em `localStorage`.
+- A exportação JSON inclui a organização antes e depois de PRAXIS.
 
-## Recursos
-- 30 estudantes fictícios.
-- Busca textual.
-- Ordenação por nome, idade, frequência e entregas.
-- Filtros de frequência, entregas, participação e organização.
-- Visualização em cards ou tabela.
-- Organização manual em:
-  - Agir agora
-  - Entender melhor
-  - Acompanhar
-  - Sem ação por enquanto
-  - Não analisado
-- Persistência automática em localStorage.
-- Exportação da organização em JSON.
-- Modal de detalhes.
-- Sem ranking ou cálculo automático de risco.
+## Como executar
+Esta versão carrega `students.json` com `fetch`, portanto deve ser servida por HTTP.
+
+Opções:
+- VS Code + Live Server;
+- `python -m http.server 8000` dentro da pasta;
+- qualquer hospedagem web estática.
+
+Depois acesse, por exemplo:
+`http://localhost:8000`
 
 ## Arquivos
 - index.html
 - styles.css
-- students.js
 - app.js
+- students.json
